@@ -4,18 +4,19 @@ import configparser
 config = configparser.RawConfigParser()
 config.optionxform = lambda option: option
 
-path=r'C:\Users\jgy21\OneDrive\桌面\python_workspace\XS_TEST01.CFG'
+path=r'C:\Users\jgy21\OneDrive\桌面\python_workspace\XS_TTT.CFG'
 config.read(path,encoding="utf-8-sig")
+Sections_get = config.sections()
 
-global sections ,RFs
+sections = [Sections_get[5], Sections_get[6], Sections_get[7], Sections_get[8]]
+#['DUT1 Cable Loss Mapping', 'DUT1 RFIO2 Table', 'DUT1 RFIO3 Table', 'DUT1 RFIO4 Table']
 
-sections = ['DUT1 Cable Loss Mapping', 'DUT1 RFIO2 Table', 'DUT1 RFIO3 Table', 'DUT1 RFIO4 Table']
 RFs = ['RF1', 'RF3', 'RF5', 'RF7']
 
 
 def adjusted_LTE(Band_num, new_setting):
         Band_num=input("輸入要修改的 Band_Number: ")
-        print(config.get('DUT1 Cable Loss Mapping',f"LTE_Band{Band_num}_TX"))
+        print(config.get(Sections_get[5],f"LTE_Band{Band_num}_TX"))
         new_setting=input("Band %s 要更新的數值: "%Band_num)
         ad_lists = []
         lte_options = [f"LTE_Band{Band_num}_TX", f"LTE_Band{Band_num}_RX", f"LTE_Band{Band_num}_RXd"]
