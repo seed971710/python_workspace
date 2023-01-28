@@ -4,7 +4,7 @@ import configparser
 config = configparser.RawConfigParser()
 config.optionxform = lambda option: option
 
-path=r'C:\Users\jgy21\OneDrive\桌面\configdataextracted\configdataextracted\XS_TEST01.CFG'
+path=r'C:\Users\jgy21\OneDrive\桌面\python_workspace\XS_TEST01.CFG'
 config.read(path,encoding="utf-8-sig")
 
 global sections ,RFs
@@ -34,7 +34,12 @@ def new_setting():
     for i in range(len(x)):
         config.set(x[i][0],x[i][1],x[i][2])
 
-new_setting()
+keyword='no'
+while True:
+    user_input = input( "要修改 Band 參數嗎 ?" )
+    if keyword in user_input :
+        break
+    new_setting()
 
 
 with open(path,'w') as fp:
