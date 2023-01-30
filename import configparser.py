@@ -4,7 +4,7 @@ import configparser
 config = configparser.RawConfigParser()
 config.optionxform = lambda option: option
 
-path=r'C:\Users\XS00053\Desktop\參數調整python\python_workspace\XS_TTT.CFG'
+path='%s'%input("請輸入要修改的 CFG 檔案路徑：")
 config.read(path,encoding="utf-8-sig")
 Sections_get = config.sections()
 
@@ -16,8 +16,8 @@ RFs = ['RF1', 'RF3', 'RF5', 'RF7']
 
 def adjusted_LTE(Band_num, new_setting):
         Band_num=input("輸入要修改的LTE Band_Number: ")
-        print(config.get(Sections_get[5],f"LTE_Band{Band_num}_TX"))
-        new_setting=input("Band %s 要更新的數值: "%Band_num)
+        tip=config.get(Sections_get[5],f"LTE_Band{Band_num}_TX")
+        new_setting=input("LTE_Band %s 要更新的數值: "%Band_num)
         LTE_adjusted_lists = []
         lte_options = [f"LTE_Band{Band_num}_TX", f"LTE_Band{Band_num}_RX", f"LTE_Band{Band_num}_RXd"]
         section_rf_map = dict(zip(sections, RFs))
@@ -32,7 +32,7 @@ def adjusted_LTE(Band_num, new_setting):
 def adjusted_NR(Band_num, new_setting):
         Band_num=input("輸入要修改的NR Band_Number: ")
         print(config.get(Sections_get[5],f"NR_n{Band_num}_TX"))
-        new_setting=input("Band %s 要更新的數值: "%Band_num)
+        new_setting=input("NR_Band %s 要更新的數值: "%Band_num)
         NR_adjusted_lists = []
         lte_options = [f"NR_n{Band_num}_TX", f"NR_n{Band_num}_RX", f"NR_n{Band_num}_RXd"]
         section_rf_map = dict(zip(sections, RFs))
