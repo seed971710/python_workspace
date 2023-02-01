@@ -46,3 +46,5 @@ while True:
 with open(path,'w') as fp:
     config.write(fp)
 
+
+print("hello")
