@@ -8,7 +8,7 @@ class xml_Parser:
     
     def __init__(self):
         
-        self.xml_file = r'C:\Users\XS00053\Desktop\參數調整python\for_xml\text.xml'
+        self.xml_file = r'C:\Users\XS00053\Desktop\參數調整python\python_workspace\For_XML\for_xml\text.xml'
         self.tree = ET.parse(self.xml_file)
         self.root = self.tree.getroot()
         self.APTCharV3_attrib = []
